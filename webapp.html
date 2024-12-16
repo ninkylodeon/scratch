@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Dog Breed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3b852;
+      color: #bd1170e7;
+      text-align: center;
+    }
+
+    h1 {
+      color: #a60c61;
+      margin-top: 20px;
+    }
+
+    .quiz-container {
+      background: #ff92e7a5;
+      box-shadow: 0px 4px 10px rgb(203, 31, 111);
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .dog-description {
+      font-size: 1.2em;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 1em;
+      border: 1px solid #e82a8c;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 10px;
+      background-color: #ea7a30;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #e67e22;
+    }
+
+    #feedback {
+      font-size: 1.1em;
+      margin-top: 20px;
+      color: #16a085;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐶 Guess the Dog Breed 🐾</h1>
+  <div class="quiz-container">
+    <div id="question-section">
+      <p class="dog-description" id="dogDescription"></p>
+      <input type="text" id="userInput" placeholder="Enter your guess..." />
+      <button onclick="checkAnswer()">Submit</button>
+    </div>
+    <div id="feedback"></div>
+    <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
+  </div>
+
+  <script>
+    // Dog breeds and descriptions
+    const dogBreeds = [
+      { breed: "Beagle", description: "This small hound has a fantastic sense of smell and loves to follow scents. They are friendly, curious, and great companions." },
+      { breed: "Golden Retriever", description: "Known for their shiny golden coats, they are incredibly friendly, intelligent, and often used as guide or therapy dogs." },
+      { breed: "Dachshund", description: "This small dog has a long body and short legs. Sometimes referred to as a 'sausage dog,' they are brave and have big personalities." },
+      { breed: "Dalmatian", description: "Famous for their black or liver spots, they are energetic and were once used as carriage dogs to guard horses and coaches." },
+      { breed: "Poodle", description: "This breed is known for being highly intelligent and often seen with curly fur. They come in standard, miniature, and toy sizes." }
+    ];
+
+    let currentQuestion = 0;
+
+    // Load the first question
+    function loadQuestion() {
+      document.getElementById("dogDescription").innerText = dogBreeds[currentQuestion].description;
+      document.getElementById("userInput").value = "";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("next-btn").classList.add("hidden");
+    }
+
+    // Check the user's answer
+    function checkAnswer() {
+      const userGuess = document.getElementById("userInput").value.trim().toLowerCase();
+      const correctAnswer = dogBreeds[currentQuestion].breed.toLowerCase();
+
+      if (userGuess === correctAnswer) {
+        document.getElementById("feedback").innerText = "🎉 Correct! Well done! 🐾";
+        document.getElementById("next-btn").classList.remove("hidden");
+      } else if (userGuess === "") {
+        document.getElementById("feedback").innerText = "⏳ Please enter a guess!";
+      } else {
+        document.getElementById("feedback").innerText = `❌ Oops! It's not ${userGuess}. Try again!`;
+      }
+    }
+
+    // Load the next question
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < dogBreeds.length) {
+        loadQuestion();
+      } else {
+        document.getElementById("question-section").innerHTML = "<p>🎉 You've completed the quiz! 🐾</p>";
+        document.getElementById("next-btn").classList.add("hidden");
+      }
+    }
+
+    // Initialize the quiz
+    loadQuestion();
+  </script>
+</body>
+</html>
