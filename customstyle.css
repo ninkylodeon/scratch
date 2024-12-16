@@ -1,0 +1,81 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(107, 8, 98);
+    background-color: rgb(218, 240, 247);
+    text-align: left;
+}
+h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(65, 13, 56);
+}
+h5{
+    font-size: medium;
+}
+P{
+    font-weight: bolder;
+}
+.resume{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+a:visited{
+    color: rgb(160, 39, 140);
+}
+img{
+    border: 4px dashed rgb(255, 0, 115);
+    padding: 5px;
+    margin: 2px;
+}
+ul > li:hover{
+     
+    background-color: rgba(132, 204, 206, 0.662);
+}
+
+}
+a{
+    color: rgb(206, 153, 83);
+
+}
+.common{
+    position: absolute;
+    padding: 5px;
+    margin: 5px;
+
+}
+.bottom{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-style: italic;
+    background-color: rgba(94, 194, 194, 0.733);
+    font-size: 50%;
+}
+.top{
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+
+}
+.content{
+    top: 150px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.nav{
+    z-index: 1;
+    position: relative;
+    float: right;
+    color: rgb(19, 87, 87);
+}
+
+
+li{
+    font-weight: 200;
+}
+
+}
